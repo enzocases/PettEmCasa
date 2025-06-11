@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="../../css/login.css" />
+  <link rel="shortcut icon" href="../../assets/patas.png" type="image/x-icon"/>
+</head>
+<body>
+  <div class="login-container">
+    <h1>LOGIN</h1>
+    <form id="login-form">
+      <strong><label for="email">EMAIL</label></strong>
+      <input type="email" id="email" name="email" required placeholder="Digite seu email"/>
+
+      <strong><label for="senha">SENHA</label></strong>
+      <input type="password" id="senha" name="senha" required placeholder="Digite sua senha"/>
+
+      <strong><label for="tipo">TIPO DE USUÁRIO</label></strong>
+      <select id="tipo" name="tipo" required>
+        <option value="">-- selecione --</option>
+        <option value="Tutor">Tutor</option>
+        <option value="Funcionario">Funcionário</option>
+      </select>
+
+      <button type="submit" class="btn-entrar">ENTRAR</button>
+    </form>
+    <p class="cadastro">
+      Ainda não tem conta? <a href="../cadastroUsuario/cadastro.html">Cadastrar</a>
+    </p>
+  </div>
+  <script src="../../js/auth.js"></script>
+  <script src="./login.js"></script>
+</body>
+</html>

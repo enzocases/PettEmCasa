@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../assets/patas.png" type="image/x-icon">
+    <title>Enviar Atualizações</title>
+    <link rel="stylesheet" href="../../css/telaTutor.css" />
+    <link rel="stylesheet" href="../../css/titulo.css" />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+</head>
+
+<body>
+    <aside class="sidebar">
+        <header class="sidebar-header">
+            Olá,<h4 id="userName">Carregando...</h4>
+        </header>
+        <nav>
+            <a href="../telaFuncionario/index.html">
+                <button class="home">
+                    <span>
+                        <i class="material-symbols-outlined">home</i>
+                        <span>Home</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../editarFuncionario/index.html">
+                <button class="editar">
+                    <span>
+                        <i class="material-symbols-outlined">edit</i>
+                        <span>Editar perfil</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../../pages/reservasFuncionario/index.html">
+                <button class="reservas">
+                    <span>
+                        <i class="material-symbols-outlined">visibility</i>
+                        <span>Reservas</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../../pages/acomodacoes/index.html">
+                <button class="reservas">
+                    <span>
+                        <i class="material-symbols-outlined">house</i>
+                        <span>Acomodações</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../../pages/capacidadeDoHotel/index.html ">
+                <button class="atualizacoes">
+                    <span>
+                        <i class="material-symbols-outlined">hotel</i>
+                        <span>Capacidade do hotel</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../../pages/estatisticas/index.html ">
+                <button class="atualizacoes">
+                    <span>
+                        <i class="material-symbols-outlined">bar_chart</i>
+                        <span>Estatísticas</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../../pages/gerenciaPertences/index.html ">
+                <button class="atualizacoes">
+                    <span>
+                        <i class="material-symbols-outlined">inventory</i>
+                        <span>Gerenciar Pertences</span>
+                    </span>
+                </button>
+            </a>
+            <a onclick="logout(); return false;">
+                <button class="logout">
+                    <span>
+                        <i class="material-symbols-outlined">logout</i>
+                        <span>Sair</span>
+                    </span>
+                </button>
+            </a>
+        </nav>
+    </aside>
+
+    <!--menu mobile-->
+    <button class="button-mobile" onclick="toggleMenu()">
+        <i class="material-symbols-outlined">menu</i>
+        <span></span>
+    </button>
+
+    <nav class="menu-mobile" id="menu-mobile">
+        <button class="button-close" onclick="toggleMenu()">
+            <span>
+                <i class="material-symbols-outlined">close</i>
+            </span>
+        </button>
+        <a href="../telaFuncionario/index.html">
+            <button>
+                <span>
+                    <i class="material-symbols-outlined">home</i>
+                    <span class="mobile-text">Home</span>
+                </span>
+            </button>
+        </a>
+        <a href="../editarFuncionario/index.html">
+            <button>
+                <span>
+                    <i class="material-symbols-outlined">edit</i>
+                    <span class="mobile-text">Editar perfil</span>
+                </span>
+            </button>
+        </a>
+        <a href="../../pages/reservasFuncionario/index.html">
+            <button>
+                <span>
+                    <i class="material-symbols-outlined">visibility</i>
+                    <span class="mobile-text">Reservas</span>
+                </span>
+            </button>
+        </a>
+        
+    </nav>
+
+    <main class="main">
+        <div class="painel-bemvindo">
+            <h1>PETS HOSPEDADOS</h1>
+        </div>
+        <div class="pets-container">
+            <!-- Pet cards serão adicionados aqui dinamicamente -->
+        </div>
+
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <h2>Nova Atualização</h2>
+                <form id="atualizacaoForm">
+                    <div class="form-group">
+                        <label for="petInfo" class="pet-info">
+                            Atualizando: <span id="selectedPetName">Nenhum pet selecionado</span>
+                        </label>
+                        <input type="hidden" id="selectedPetId" name="petId">
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="comeuBem" name="comeuBem">
+                            Se o pet comeu bem
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="tomouBanho" name="tomouBanho">
+                            Se tomou banho
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="fezExercicios" name="fezExercicios">
+                            Se fez exercícios
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="brincou" name="brincou">
+                            Se brincou
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="descansouBem" name="descansouBem">
+                            Se descansou bem
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="observacoes">Observações gerais</label>
+                        <textarea id="observacoes" name="observacoes" rows="4"></textarea>
+                    </div>
+                    <div class="botoes">
+                        <button type="submit" class="salvar">Salvar</button>
+                        <button type="button" class="cancelar" onclick="fecharModal()">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../js/auth.js"></script>
+    <script src="./assets/script.js"></script>
+</body>
+
+</html>

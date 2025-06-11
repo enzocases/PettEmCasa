@@ -1,0 +1,192 @@
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.pet-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.pet-card:hover {
+  transform: translateY(-5px);
+}
+
+.pet-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.pet-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1rem;
+  border: 2px solid #4CAF50;
+}
+
+.pet-details {
+  flex: 1;
+}
+
+.pet-details h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.pet-details p {
+  margin: 0.25rem 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.update-info {
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.update-info p {
+  margin: 0.5rem 0;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.view-details-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  margin-top: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.view-details-btn:hover {
+  background-color: #45a049;
+}
+
+/* Modal styles */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background-color: white;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.close-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.detalhes-content {
+  margin-top: 1rem;
+}
+
+.checklist {
+  margin: 1.5rem 0;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.check-item .label {
+  min-width: 120px;
+  color: #666;
+}
+
+.observacoes {
+  margin-top: 1.5rem;
+}
+
+.observacoes h4 {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+#observacoes-texto {
+  color: #555;
+  line-height: 1.4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+
+  .modal {
+    width: 95%;
+    padding: 1.5rem;
+  }
+}
+
+/* Status indicators */
+.status-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.status-positive {
+  background-color: #4CAF50;
+}
+
+.status-negative {
+  background-color: #f44336;
+}
+
+/* Pet header styles */
+.pet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+.pet-header h1 {
+  margin: 0;
+  color: #333;
+  font-size: 2rem;
+}

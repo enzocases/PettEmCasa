@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cadastrar Pet</title>
+
+  <!-- Fonte Bayon do Google Fonts + fallback -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bayon&display=swap" rel="stylesheet">
+
+  <!-- Link para o CSS -->
+  <link rel="stylesheet" href="assets/style.css"/>
+</head>
+<body>
+  <!-- Barra lateral -->
+  <div class="sidebar">
+    <!-- Perfil do usuário -->
+    <div class="user-profile">
+      <img src="" alt="Foto do usuário" class="profile-image">
+      <div class="user-info">
+        <h2 class="user-name">Carregando...</h2>
+        <p>Tutor</p>
+      </div>
+    </div>
+    
+    <nav>
+      <ul>
+        <li class="sidebar-item">
+          <a href="#" class="sidebar-link" id="editarPerfilBtn">
+            <img src="assets/icons/ferramenta-lapis.png" alt="Ícone de lápis" class="menu-icon">
+            <span>Editar perfil</span>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li class="sidebar-item">
+          <a href="../visualizarPet/index.html" class="sidebar-link" id="gerenciarPetBtn">
+            <img src="assets/icons/osso.png" alt="Ícone de osso" class="menu-icon">
+            <span>Gerenciar pet</span>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li class="sidebar-item">
+          <a href="../BoletimComportamental/lista_boletins.html" class="sidebar-link" id="boletimBtn">
+            <img src="assets/icons/documento.png" alt="Ícone de documento" class="menu-icon">
+            <span>Boletim</span>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li class="sidebar-item">
+          <a href="../Reservas/index.html" class="sidebar-link" id="minhasReservasBtn">
+            <img src="assets/icons/olho.png" alt="Ícone de olho" class="menu-icon">
+            <span>Minhas reservas</span>
+          </a>
+        </li>
+        <li class="divider"></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Conteúdo principal -->
+  <div class="main-content">
+    <div class="form-container">
+      <h1>Cadastrar Pet</h1>
+      <form id="cadastrarPetForm">
+        <!-- Primeira linha: Nome e Idade (2 colunas) -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Nome do pet" required>
+          </div>
+          <div class="form-group">
+            <label for="idade">Idade</label>
+            <input type="text" id="idade" name="idade" placeholder="Idade do pet" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="genero">Gênero</label>
+            <select id="genero" name="genero" required>
+              <option value="">Selecione o gênero</option>
+              <option value="Macho">Macho</option>
+              <option value="Fêmea">Fêmea</option>
+            </select>
+          </div>
+          <!-- Segunda linha: Porte -->
+          <div class="form-group">
+            <label for="porte">Porte</label>
+            <select id="porte" name="porte" required>
+              <option value="">Selecione o porte</option>
+              <option value="Pequeno">Pequeno</option>
+              <option value="Médio">Médio</option>
+              <option value="Grande">Grande</option>
+            </select>
+          </div>
+        </div>
+       
+        <!-- Terceira linha: Raça -->
+        <div class="form-group">
+          <label for="raca">Raça</label>
+          <input type="text" id="raca" name="raca" placeholder="Raça do pet" required>
+        </div>
+        
+        <!-- Quarta linha: Botão Cadastrar -->
+        <div class="form-row">
+          <button type="submit" id="cadastrarBtn">Cadastrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/auth.js"></script>
+  <script src="assets/script.js"></script>
+  <script>
+    // Update UI when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      updateUIForAuthStatus();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/telaTutor.css" />
+    <link rel="stylesheet" href="../../css/titulo.css" />
+    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="shortcut icon" href="../../assets/patas.png" type="image/x-icon">
+    <title>Boletim do Funcionário</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.2.0/introjs.min.css">
+</head>
+
+<body>
+    <aside class="sidebar">
+        <header class="sidebar-header">
+            Olá,<h4 id="userName">Carregando...</h4>
+        </header>
+        <nav>
+             <a href="../telaFuncionario/index.html">
+                <button class="home">
+                    <span>
+                        <i class="material-symbols-outlined">home</i>
+                        <span>Home</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../editarFuncionario/index.html">
+                <button class="editar">
+                    <span>
+                        <i class="material-symbols-outlined">edit</i>
+                        <span>Editar perfil</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../../pages/reservasFuncionario/index.html">
+                <button class="reservas">
+                    <span>
+                        <i class="material-symbols-outlined">visibility</i>
+                        <span>Reservas</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../../pages/acomodacoes/index.html">
+                <button class="reservas">
+                    <span>
+                        <i class="material-symbols-outlined">house</i>
+                        <span>Acomodações</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../../pages/enviaAtualizacoes/index.html">
+                <button class="reservas">
+                    <span>
+                        <i class="material-symbols-outlined">mail</i>
+                        <span>Enviar atualizações</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../../pages/capacidadeDoHotel/index.html ">
+                <button class="atualizacoes">
+                    <span>
+                        <i class="material-symbols-outlined">hotel</i>
+                        <span>Capacidade do hotel</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../../pages/estatisticas/index.html ">
+                <button class="atualizacoes">
+                    <span>
+                        <i class="material-symbols-outlined">bar_chart</i>
+                        <span>Estatísticas</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../../pages/gerenciaPertences/index.html ">
+                <button class="atualizacoes">
+                    <span>
+                        <i class="material-symbols-outlined">inventory</i>
+                        <span>Gerenciar Pertences</span>
+                    </span>
+                </button>
+            </a>
+            <a onclick="logout(); return false;">
+                <button class="logout">
+                    <span>
+                        <i class="material-symbols-outlined">logout</i>
+                        <span>Sair</span>
+                    </span>
+                </button>
+            </a>
+        </nav>
+    </aside>
+    
+    <!--menu mobile-->
+    <button class="button-mobile" onclick="toggleMenu()">
+        <i class="material-symbols-outlined">menu</i>
+        <span></span>
+    </button>
+
+    <nav class="menu-mobile" id="menu-mobile">
+        <button class="button-close" onclick="toggleMenu()">
+            <span>
+                <i class="material-symbols-outlined">close</i>
+            </span>
+        </button>
+        <a href="../telaFuncionario/index.html">
+            <button>
+                <span>
+                    <i class="material-symbols-outlined">home</i>
+                    <span class="mobile-text">Home</span>
+                </span>
+            </button>
+        </a>
+        <a href="../editarFuncionario/index.html">
+            <button>
+                <span>
+                    <i class="material-symbols-outlined">edit</i>
+                    <span class="mobile-text">Editar perfil</span>
+                </span>
+            </button>
+        </a>
+        <a href="../../pages/reservasFuncionario/index.html">
+            <button>
+                <span>
+                    <i class="material-symbols-outlined">visibility</i>
+                    <span class="mobile-text">Reservas</span>
+                </span>
+            </button>
+        </a>
+        <a onclick="logout(); return false;">
+            <button>
+                <span>
+                    <i class="material-symbols-outlined">logout</i>
+                    <span class="mobile-text">Sair</span>
+                </span>
+            </button>
+        </a>
+    </nav>
+
+    <main class="main">
+        <div class="painel-bemvindo">
+            <h1>BOLETIM COMPORTAMENTAL</h1>
+        </div>
+        
+        <div class="boletim-container">
+            <div class="boletim-header">
+                <h2>Relatório de Atividades</h2>
+                <div class="data-selector">
+                    <label for="data">Data:</label>
+                    <input type="date" id="data" name="data">
+                </div>
+            </div>
+
+            <div class="boletim-form">
+                <div class="form-group">
+                    <label for="reserva">Reserva:</label>
+                    <select id="reserva" required>
+                        <option value="">Selecione uma reserva...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="ingestaoAgua">Ingestão de Água:</label>
+                    <select id="ingestaoAgua" required>
+                        <option value="">Selecione uma opção...</option>
+                        <option value="Normal">Normal</option>
+                        <option value="Bebeu mais que o normal">Bebeu mais que o normal</option>
+                        <option value="Bebeu menos que o normal">Bebeu menos que o normal</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="apetite">Apetite:</label>
+                    <select id="apetite" required>
+                        <option value="">Selecione uma opção...</option>
+                        <option value="Comeu normalmente">Comeu normalmente</option>
+                        <option value="Comeu pouco">Comeu pouco</option>
+                        <option value="Comeu com vontade">Comeu com vontade</option>
+                        <option value="Recusou a comida">Recusou a comida</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="nivelEnergia">Nível de Energia:</label>
+                    <select id="nivelEnergia" required>
+                        <option value="">Selecione uma opção...</option>
+                        <option value="Calmo">Calmo</option>
+                        <option value="Ativo">Ativo</option>
+                        <option value="Muito agitado">Muito agitado</option>
+                        <option value="Apático">Apático</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="interacaoPessoas">Interação com Pessoas:</label>
+                    <select id="interacaoPessoas" required>
+                        <option value="">Selecione uma opção...</option>
+                        <option value="Amigável">Amigável</option>
+                        <option value="Medroso">Medroso</option>
+                        <option value="Agitado">Agitado</option>
+                        <option value="Indiferente">Indiferente</option>
+                        <option value="Agressivo">Agressivo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="interacaoAnimais">Interação com Outros Animais:</label>
+                    <select id="interacaoAnimais" required>
+                        <option value="">Selecione uma opção...</option>
+                        <option value="Sociável">Sociável</option>
+                        <option value="Brincalhão">Brincalhão</option>
+                        <option value="Dominante">Dominante</option>
+                        <option value="Submisso">Submisso</option>
+                        <option value="Reativo">Reativo</option>
+                        <option value="Agressivo">Agressivo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="comportamentoPasseios">Comportamento em Passeios:</label>
+                    <select id="comportamentoPasseios" required>
+                        <option value="">Selecione uma opção...</option>
+                        <option value="Puxa a guia">Puxa a guia</option>
+                        <option value="Cheira calmamente">Cheira calmamente</option>
+                        <option value="Late para outros cães/pessoas">Late para outros cães/pessoas</option>
+                        <option value="Medo de barulhos">Medo de barulhos</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="comportamentoAmbienteInterno">Comportamento em Ambiente Interno:</label>
+                    <select id="comportamentoAmbienteInterno" required>
+                        <option value="">Selecione uma opção...</option>
+                        <option value="Destrutivo">Destrutivo</option>
+                        <option value="Late excessivamente">Late excessivamente</option>
+                        <option value="Tranquilo">Tranquilo</option>
+                        <option value="Carente">Carente</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="brincadeirasPreferidas">Brincadeiras Preferidas:</label>
+                    <textarea id="brincadeirasPreferidas" rows="2" placeholder="Descreva as brincadeiras preferidas do pet..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="observacoes">Observações Adicionais:</label>
+                    <textarea id="observacoes" rows="3" placeholder="Adicione observações importantes..."></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-salvar" onclick="salvarBoletim()">Salvar Boletim</button>
+                    <button type="button" class="btn-limpar" onclick="limparFormulario()">Limpar</button>
+                </div>
+            </div>
+
+            <div class="boletins-anteriores">
+                <h3>Boletins Anteriores</h3>
+                <div id="lista-boletins">
+                    <!-- Lista de boletins será preenchida via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../js/auth.js"></script>
+    <script src="assets/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.2.0/intro.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            requireUserType('Funcionario');
+            
+            const user = getCurrentUser();
+            if (user) {
+                document.getElementById('userName').textContent = user.nome;
+            }
+
+            // Set default date as today
+            document.getElementById('data').valueAsDate = new Date();
+        });
+
+        function toggleMenu(){
+            const menuMobile = document.getElementById("menu-mobile")
+            if(menuMobile.className === "menu-mobile-active"){
+                menuMobile.className = "menu-mobile"
+            }else{
+                menuMobile.className = "menu-mobile-active"
+            }
+        }
+    </script>
+</body>
+</html>

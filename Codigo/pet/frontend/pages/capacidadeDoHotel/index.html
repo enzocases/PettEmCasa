@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/telaTutor.css" />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="shortcut icon" href="../../assets/patas.png" type="image/x-icon">
+    <title>Capacidade do Hotel</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.2.0/introjs.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <aside class="sidebar">
+        <header class="sidebar-header">
+            Olá,<h4 id="userName">Carregando...</h4>
+        </header>
+        <nav>
+            <a href="../telaFuncionario/index.html">
+                <button class="home">
+                    <span>
+                        <i class="material-symbols-outlined">home</i>
+                        <span>Home</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../editarFuncionario/index.html">
+                <button class="editar">
+                    <span>
+                        <i class="material-symbols-outlined">edit</i>
+                        <span>Editar perfil</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../../pages/reservasFuncionario/index.html">
+                <button class="reservas">
+                    <span>
+                        <i class="material-symbols-outlined">visibility</i>
+                        <span>Reservas</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../../pages/acomodacoes/index.html">
+                <button class="reservas">
+                    <span>
+                        <i class="material-symbols-outlined">house</i>
+                        <span>Acomodações</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../../pages/enviaAtualizacoes/index.html">
+                <button class="reservas">
+                    <span>
+                        <i class="material-symbols-outlined">mail</i>
+                        <span>Enviar atualizações</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../../pages/estatisticas/index.html ">
+                <button class="atualizacoes">
+                    <span>
+                        <i class="material-symbols-outlined">bar_chart</i>
+                        <span>Estatísticas</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../../pages/gerenciaPertences/index.html ">
+                <button class="atualizacoes">
+                    <span>
+                        <i class="material-symbols-outlined">inventory</i>
+                        <span>Gerenciar Pertences</span>
+                    </span>
+                </button>
+            </a>
+            <a onclick="logout(); return false;">
+                <button class="logout">
+                    <span>
+                        <i class="material-symbols-outlined">logout</i>
+                        <span>Sair</span>
+                    </span>
+                </button>
+            </a>
+        </nav>
+    </aside>
+    
+    <!--menu mobile-->
+    <button class="button-mobile" onclick="toggleMenu()">
+        <i class="material-symbols-outlined">menu</i>
+        <span></span>
+    </button>
+
+    <main class="main">
+        <div class="content">
+            <div class="painel-bemvindo">
+                <h1>CAPACIDADE DO HOTEL</h1>
+            </div>
+
+            <div class="dashboard">
+                <div class="card">
+                    <i class="material-symbols-outlined">hotel</i>
+                    <p>Capacidade Total</p>
+                    <span id="totalCapacity"></span>
+                </div>
+                <div class="card">
+                    <i class="material-symbols-outlined">pets</i>
+                    <p>Pets Hospedados</p>
+                    <span id="occupiedSpots"></span>
+                </div>
+                <div class="card">
+                    <i class="material-symbols-outlined">check_circle</i>
+                    <p>Vagas Disponíveis</p>
+                    <span id="availableSpots"></span>
+                </div>
+            </div>
+
+            <div class="chart-container" style="position: relative; height:300px; width:80%; margin: 20px auto;">
+                <canvas id="capacityChart"></canvas>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../js/auth.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.2.0/intro.min.js"></script>
+    <script src="./assets/script.js"></script>
+</body>
+
+</html>

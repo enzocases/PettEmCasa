@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Visualizar pets</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bayon&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/style.css"/>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="user-profile">
+      <img src="" alt="Foto do usuário" class="profile-image">
+      <div class="user-info">
+        <h2>Jane Doe Silva</h2>
+        <p>Tutor</p>
+      </div>
+    </div>
+    
+    <nav>
+      <ul>
+        <li class="sidebar-item">
+          <a href="#" class="sidebar-link" id="editarPerfilBtn">
+            <img src="assets/icons/ferramenta-lapis.png" alt="Ícone de lápis" class="menu-icon">
+            <span>Editar perfil</span>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li class="sidebar-item">
+          <a href="#" class="sidebar-link" id="gerenciarPetBtn">
+            <img src="assets/icons/osso.png" alt="Ícone de osso" class="menu-icon">
+            <span>Gerenciar pet</span>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li class="sidebar-item">
+          <a href="#" class="sidebar-link" id="boletimBtn">
+            <img src="assets/icons/documento.png" alt="Ícone de documento" class="menu-icon">
+            <span>Boletim</span>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li class="sidebar-item">
+          <a href="#" class="sidebar-link" id="minhasReservasBtn">
+            <img src="assets/icons/olho.png" alt="Ícone de olho" class="menu-icon">
+            <span>Minhas reservas</span>
+          </a>
+        </li>
+        <li class="divider"></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="pet-header">
+    <button class="add-pet-btn" id="adicionarReservaBtn"><a href="../Cadastro de Pet/index.html">+</a></button>
+    <h1>Meus Pets</h1>
+  </div>
+
+  <div class="card-container"></div>
+
+  <!-- Modal exclusão -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal">
+      <div class="close-icon" onclick="fecharModal()">×</div>
+      <h2>Excluir pet?</h2>
+      <p>Esta ação não poderá ser desfeita.</p>
+      <div class="modal-buttons">
+        <button class="excluir">Excluir</button>
+        <button class="cancelar" onclick="fecharModal()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal edição -->
+  <div class="modal-overlay" id="modal-editar">
+    <div class="modal">
+      <div class="close-icon" onclick="fecharModalEditar()">×</div>
+      <h2>Editar pet</h2>
+      <form onsubmit="salvarEdicao(event)" data-id-pet="">
+        <input type="text" id="edit-nome" placeholder="Nome" required>
+        <input type="text" id="edit-idade" placeholder="Idade">
+        <input type="text" id="edit-raca" placeholder="Raça">
+        <select id="genero">
+          <option value="Macho">Macho</option>
+          <option value="Fêmea">Fêmea</option>
+        </select>
+        <select id="porte">
+          <option value="Pequeno">Pequeno</option>
+          <option value="Médio">Médio</option>
+          <option value="Grande">Grande</option>
+        </select>
+        <button class="salvar" type="submit">Salvar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="./assets/script.js" defer></script>
+  <script src="../../js/auth.js"></script>
+</body>
+</html>

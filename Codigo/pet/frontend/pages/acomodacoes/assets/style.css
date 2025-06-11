@@ -1,0 +1,221 @@
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.painel-bemvindo h1 {
+    color: #4B0082;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background-color: #eee;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: calc(45% - 45px);
+    box-sizing: border-box;
+    position: relative;
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.status-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.status-disponivel {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.status-ocupada {
+    background-color: #f44336;
+    color: white;
+}
+
+.status-manutencao {
+    background-color: #ff9800;
+    color: white;
+}
+
+.botoes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.botoes button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.botoes button:hover {
+    opacity: 0.8;
+}
+
+.editar-acomodacao {
+    background-color: #2196F3;
+    color: white;
+}
+
+.excluir-acomodacao {
+    background-color: #f44336;
+    color: white;
+}
+
+.add-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+}
+
+.add-button:hover {
+    transform: scale(1.1);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.main {
+    margin-left: 310px;
+    margin-right: 6px;
+}
+
+@media (width < 920px) {
+    .main {
+        margin-left: 78px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main {
+        margin-left: 6px;
+    }
+}
+
+
+
+
+
+
+.success-message {
+    text-align: center;
+    padding: 20px;
+}
+
+.success-message p {
+    color: #4CAF50;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.success-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn-adicionar-mais,
+.btn-fechar {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.btn-adicionar-mais {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-adicionar-mais:hover {
+    background-color: #45a049;
+}
+
+.btn-fechar {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn-fechar:hover {
+    background-color: #da190b;
+}
+
+.success-buttons i {
+    font-size: 20px;
+} 
+

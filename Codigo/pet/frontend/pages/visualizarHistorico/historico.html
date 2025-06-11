@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Reservas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="shortcut icon" href="../../assets/patas.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background-color: #fff;
+            color: black;
+            display: flex;
+        }
+
+        /* Estilo do menu lateral */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 300px;
+            height: 100%;
+            padding: 40px 10px 30px 10px;
+            border-right: 1px solid #2f3336;
+            transition: all 0.35s;
+        }
+
+        .sidebar-header {
+            width: 100%;
+            margin-bottom: 16px;
+        }
+
+        .fotoTutor {
+            width: 65px;
+            min-height: 65px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.4s;
+            margin-left: 10px;
+        }
+
+        .fotoTutor:hover {
+            transform: scale(1.5);
+        }
+
+        .sidebar button {
+            height: 60px;
+            background: transparent;
+            font-family: inherit;
+            color: inherit;
+            cursor: pointer;
+            text-align: left;
+            padding: 0;
+            border: none;
+        }
+
+        .sidebar button>span {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            height: 48px;
+            padding: 0 30px 0 12px;
+            border-radius: 24px;
+            line-height: 1;
+            transition: all 0.2s;
+        }
+
+        .sidebar button:hover>span {
+            background: #ffc737;
+        }
+
+        .sidebar button i {
+            position: relative;
+            font-size: 30px;
+            transition: 0.2s;
+        }
+
+        .sidebar button span {
+            font-size: 16px;
+        }
+
+        .sidebar>nav {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Estilo do conteúdo principal */
+        .main-content {
+            margin-left: 310px;
+            margin-right: 6px;
+            padding: 20px;
+            flex: 1;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .card h2 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .status.pendente {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status.finalizada {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .status.cancelada {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .info {
+            margin: 15px 0;
+        }
+
+        .info b {
+            display: block;
+            margin-top: 10px;
+            color: #666;
+        }
+
+        .info div {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        #loadingHistory, #errorHistory, #emptyHistory {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        #errorHistory {
+            color: #721c24;
+            background-color: #f8d7da;
+        }
+
+        #emptyHistory {
+            color: #856404;
+            background-color: #fff3cd;
+        }
+
+        /* Estilos para a barra de pesquisa e filtro */
+        .search-filter-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .search-container {
+            flex: 1;
+            position: relative;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 12px 20px;
+            padding-left: 45px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .search-container input:focus {
+            outline: none;
+            border-color: #ffc737;
+            box-shadow: 0 0 0 2px rgba(255, 199, 55, 0.2);
+        }
+
+        .search-container i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .filter-container {
+            min-width: 200px;
+        }
+
+        .filter-container select {
+            width: 100%;
+            padding: 12px 20px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-container select:focus {
+            outline: none;
+            border-color: #ffc737;
+            box-shadow: 0 0 0 2px rgba(255, 199, 55, 0.2);
+        }
+
+        /* Responsividade */
+        @media (width < 920px) {
+            .sidebar {
+                width: 72px;
+            }
+
+            .sidebar button>span {
+                width: 50px;
+            }
+
+            .sidebar button>span>span {
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            .fotoTutor {
+                width: 40px;
+                min-height: 40px;
+            }
+
+            .main-content {
+                margin-left: 78px;
+                transition: margin 0.4s;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 6px;
+            }
+        }
+
+        .boletim-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background-color: #ffc737;
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .boletim-btn:hover {
+            background-color: #6C63FF;
+            color: #fff;
+        }
+
+        .boletim-btn i {
+            font-size: 20px;
+        }
+
+        #cardsContainer {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+  <aside class="sidebar">
+      <header class="sidebar-header">
+        <img class="fotoTutor" src="https://thispersondoesnotexist.com/" alt="foto Tutor">
+        <h4 id="userName">Carregando...</h4>
+      </header>
+
+      <nav>
+        <a href="../telaTutor/telaTutor.html">
+          <button class="editar">
+            <span>
+              <i class="material-symbols-outlined">home</i>
+              <span>Home</span>
+            </span>
+          </button>
+        </a>
+        <a href="../editarTutor/editarTutor.html">
+          <button class="editar">
+              <span>
+                  <i class="material-symbols-outlined">edit</i>
+                  <span>Editar perfil</span>
+              </span>
+          </button>
+      </a>
+      <a href="../../pages/visualizarPet/index.html">
+          <button class="gerenciarPet">
+              <span>
+                  <i class="material-symbols-outlined">Pet_Supplies</i>
+                  <span>Gerenciar pet</span>
+              </span>
+          </button>
+      </a>
+      <a href="../../pages/Reservas/index.html">
+          <button class="reservas">
+              <span>
+                  <i class="material-symbols-outlined">visibility</i>
+                  <span>Minhas reservas</span>
+              </span>
+          </button>
+      </a>
+      <a href="../../pages/visualizarHistorico/historico.html">
+          <button class="historico">
+              <span>
+                  <i class="material-symbols-outlined">history</i>
+                  <span>Histórico</span>
+              </span>
+          </button>
+      </a>
+      <a href="../../pages/boletimTutor/index.html">
+          <button class="boletim">
+              <span>
+                  <i class="material-symbols-outlined">description</i>
+                  <span>Boletim</span>
+              </span>
+          </button>
+      </a>
+      <a href="../../pages/visualizarAtualizacoes/index.html">
+          <button class="atualizacoes">
+              <span>
+                  <i class="material-symbols-outlined">update</i>
+                  <span>Atualizações</span>
+              </span>
+          </button>
+      </a>
+        <a href="#" onclick="logout(); return false;">
+          <button>
+            <span>
+              <i class="material-symbols-outlined">logout</i>
+              <span>Sair</span>
+            </span>
+          </button>
+        </a>
+      </nav>
+    </aside>
+
+    <div class="main-content">
+        <div class="search-filter-container">
+            <div class="search-container">
+                <i class="material-symbols-outlined">search</i>
+                <input type="text" id="searchInput" placeholder="Buscar por nome do pet...">
+            </div>
+            <div class="filter-container">
+                <select id="statusFilter">
+                    <option value="todos">Todos os status</option>
+                    <option value="Finalizada">Finalizadas</option>
+                    <option value="Cancelada">Canceladas</option>
+                    <option value="Pendente">Pendentes</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="loadingHistory">Carregando histórico...</div>
+        <div id="errorHistory" style="display: none;">Erro ao carregar histórico.</div>
+        <div id="emptyHistory" style="display: none;">Nenhuma reserva encontrada.</div>
+        <div id="cardsContainer"></div>
+    </div>
+
+    <script src="../../../js/auth.js"></script>
+    <script src="assets/script.js"></script>
+</body>
+</html>

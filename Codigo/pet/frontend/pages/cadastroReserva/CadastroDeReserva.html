@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      body {
+        background-color: #f3f3e9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .formulario {
+        padding: 20px;
+        border-radius: 10px;
+
+        width: 600px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .input-group {
+        display: flex;
+        gap: 30px;
+        flex-direction: column;
+      }
+
+      input,
+      textarea {
+        box-sizing: border-box;
+        background-color: transparent;
+        border: 1px solid black;
+        border-radius: 32px;
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        height: 50px;
+      }
+
+      input[type="number"] {
+        width: 200px;
+      }
+
+      button {
+        background-color: #f4cb01;
+        width: 600px;
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 32px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+    
+    </style>
+
+    <title>Pett em Casa</title>
+  </head>
+  <body>
+    <section class="formulario">
+      <h1>Cadastrar reserva</h1>
+      <form id="formReserva">
+        <div class="input-group">
+          <div>
+            <label for="nome">Selecionar pet:</label><br />
+            <select name="pets" id="pets">
+              <option value="5">Lilica</option>
+              <option value="4">Esnupi</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="entrada">Entrada:</label>
+            <input type="date" id="entrada" name="entrada" />
+          </div>
+          <div>
+            <label for="saida">Saída:</label>
+            <input type="date" id="saida" name="saida" />
+          </div>
+        </div>
+      
+
+        <div>
+          <button  type="submit">Cadastrar</button>
+        </div>
+      </form>
+    </section>
+
+    <script src="/js/auth.js"></script>
+    <script src="../../js/CadastroDeReserva.js"></script>
+  </body>
+</html>

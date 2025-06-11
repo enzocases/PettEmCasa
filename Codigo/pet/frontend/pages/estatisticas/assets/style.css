@@ -1,0 +1,118 @@
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+    padding: 0 20px;
+}
+
+.card {
+    background: #fff;
+    padding: 20px;
+    width: 250px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card i {
+    font-size: 36px;
+    color: #4B0082;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin: 5px 0;
+}
+
+.card span {
+    font-size: 24px;
+    color: #4B0082;
+    font-weight: 600;
+}
+
+.content {
+    padding: 2rem;
+}
+
+.painel-bemvindo {
+    position: relative;
+    isolation: isolate;
+    background-color: #DCD7F8;
+    border-radius: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 20px;
+}
+
+.painel-bemvindo h1 {
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 4rem;
+    text-align: center;
+    color: #4B0082;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#graficoOcupacao {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 40px 20px 20px 20px;
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        gap: 15px;
+        padding: 0 10px;
+    }
+
+    .card {
+        width: calc(50% - 15px);
+        min-width: 200px;
+    }
+
+    .painel-bemvindo {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .painel-bemvindo h1 {
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .painel-bemvindo {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .painel-bemvindo h1 {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+}

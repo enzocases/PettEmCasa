@@ -1,0 +1,163 @@
+/* Reseta margens e paddings padrões */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fonte Bayon + fallback */
+body {
+  font-family: 'Bayon', 'Arial', sans-serif;
+  background-color: #f5f5e9;
+}
+
+/* Barra lateral */
+.sidebar {
+  width: 250px;
+  background-color: transparent; /* Herda a cor do body */
+  min-height: 100vh;
+  float: left;
+  padding: 20px;
+  border-right: 1px solid #ccc;
+}
+
+/* Perfil do usuário na sidebar */
+.user-profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  cursor: default;
+}
+
+.profile-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+  border: 1px solid #ccc; 
+}
+
+.user-info h2 {
+  font-size: 16px;
+  margin: 0;
+  font-weight: normal;
+}
+
+.user-info p {
+  font-size: 14px;
+  color: #666;
+  margin: 2px 0 0 0;
+  font-weight: normal;
+}
+
+/* Lista de navegação */
+.sidebar nav ul {
+  list-style: none;
+}
+
+/* Cada item do menu */
+.sidebar-item {
+  margin-bottom: 10px;
+}
+
+/* Link do menu */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s;
+}
+
+.menu-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.sidebar-link:hover {
+  background-color: #fff8cc;
+}
+
+/* Linha divisória */
+.divider {
+  border-bottom: 1px solid #ccc;
+  margin: 0 0 10px 0;
+}
+
+/* Conteúdo principal */
+.main-content {
+  margin-left: 250px;
+  background-color: transparent;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+}
+
+/* Contêiner do formulário */
+.form-container {
+  max-width: 600px;
+  width: 100%;
+}
+
+/* Título principal */
+.form-container h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  font-weight: normal;
+}
+
+/* Linhas do formulário (2 colunas) */
+.form-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+/* Form-group */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: normal;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  font-size: 18px;
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Botão Cadastrar */
+#cadastrarBtn {
+  display: block;
+  margin: 0 auto;
+  background-color: #ffcc00;
+  color: #333;
+  font-weight: normal;
+  font-size: 18px;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  max-width: 250px;
+}
+
+#cadastrarBtn:hover {
+  background-color: #e6b800;
+}

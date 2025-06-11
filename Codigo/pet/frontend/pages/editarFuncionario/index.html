@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/telaTutor.css" />
+    <link rel="stylesheet" href="../../css/titulo.css" />
+    <link rel="shortcut icon" href="../../assets/patas.png" type="image/x-icon">
+    <title>Editar</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.2.0/introjs.min.css">
+</head>
+
+<body>
+    <aside class="sidebar">
+        <header class="sidebar-header">
+            Olá,<h4 id="userName">Carregando...</h4>
+        </header>
+        <nav>
+            <a href="../telaFuncionario/index.html">
+                <button class="home">
+                    <span>
+                        <i class="material-symbols-outlined">home</i>
+                        <span>Home</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../../pages/reservasFuncionario/index.html">
+                <button class="reservas">
+                    <span>
+                        <i class="material-symbols-outlined">visibility</i>
+                        <span>Reservas</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../../pages/acomodacoes/index.html">
+                <button class="reservas">
+                    <span>
+                        <i class="material-symbols-outlined">house</i>
+                        <span>Acomodações</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../../pages/enviaAtualizacoes/index.html">
+                <button class="reservas">
+                    <span>
+                        <i class="material-symbols-outlined">mail</i>
+                        <span>Enviar atualizações</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../../pages/capacidadeDoHotel/index.html ">
+                <button class="atualizacoes">
+                    <span>
+                        <i class="material-symbols-outlined">hotel</i>
+                        <span>Capacidade do hotel</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../../pages/estatisticas/index.html ">
+                <button class="atualizacoes">
+                    <span>
+                        <i class="material-symbols-outlined">bar_chart</i>
+                        <span>Estatísticas</span>
+                    </span>
+                </button>
+            </a>
+            <a href="../../pages/gerenciaPertences/index.html ">
+                <button class="atualizacoes">
+                    <span>
+                        <i class="material-symbols-outlined">inventory</i>
+                        <span>Gerenciar Pertences</span>
+                    </span>
+                </button>
+            </a>
+            <a onclick="logout(); return false;">
+                <button class="logout">
+                    <span>
+                        <i class="material-symbols-outlined">logout</i>
+                        <span>Sair</span>
+                    </span>
+                </button>
+            </a>
+        </nav>
+    </aside>
+    
+    <!--menu mobile-->
+    <button class="button-mobile" onclick="toggleMenu()">
+        <i class="material-symbols-outlined">menu</i>
+        <span></span>
+    </button>
+
+    <nav class="menu-mobile" id="menu-mobile">
+        <button class="button-close" onclick="toggleMenu()">
+            <span>
+                <i class="material-symbols-outlined">close</i>
+            </span>
+        </button>
+        <a href="#">
+            <button>
+                <span>
+                    <i class="material-symbols-outlined">edit</i>
+                    <span class="mobile-text">Editar perfil</span>
+                </span>
+            </button>
+        </a>
+        <a href="../../pages/visualizarPet/index.html">
+            <button>
+                <span>
+                    <i class="material-symbols-outlined">Pet_Supplies</i>
+                    <span class="mobile-text">Gerenciar pet</span>
+                </span>
+            </button>
+        </a>
+        <a href="../../pages/Reservas/index.html">
+            <button>
+                <span>
+                    <i class="material-symbols-outlined">visibility</i>
+                    <span class="mobile-text">Minhas reservas</span>
+                </span>
+            </button>
+        </a>
+        <a href="../../pages/BoletimComportamental/lista_boletins.html">
+            <button>
+                <span>
+                    <i class="material-symbols-outlined">description</i>
+                    <span class="mobile-text">Boletim</span>
+                </span>
+            </button>
+        </a>
+        <a href="../../pages/visualizarAtualizacoes/index.html">
+            <button class="atualizacoes">
+                <span>
+                    <i class="material-symbols-outlined">update</i>
+                    <span>Atualizações</span>
+                </span>
+            </button>
+        </a>
+        <a href="#" onclick="logout(); return false;">
+            <button>
+                <span>
+                    <i class="material-symbols-outlined">logout</i>
+                    <span class="mobile-text">Sair</span>
+                </span>
+            </button>
+        </a>
+    </nav>
+
+    <main class="main" style="padding: 2rem;">
+        <div class="painel-bemvindo">
+            <h1>EDITAR FUNCIONÁRIO</h1>
+        </div>
+        <form id="editarTutorForm">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" name="cpf" required>
+            </div>
+            <div class="form-group">
+                <label for="cargo">Cargo:</label>
+                <input type="text" id="cargo" name="cargo" required>
+            </div>
+
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </form>
+    </main>
+
+    <script src="../../js/auth.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.2.0/intro.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            requireUserType('Funcionario');
+            
+            if (isAuthenticated()) {
+                const user = getCurrentUser();
+                if (user) {
+                    console.log(user);
+                    document.getElementById('userName').textContent = user.nome;
+
+                    // Preencher os campos do formulário com os dados do usuário
+                    document.getElementById('nome').value = user.nome;
+                    document.getElementById('telefone').value = user.telefone;
+                    document.getElementById('email').value = user.email;
+                    document.getElementById('cpf').value = user.cpf;
+                    document.getElementById('cargo').value = user.cargo;
+                }
+
+                const form = document.getElementById('editarTutorForm');
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault();
+
+                    const nome = document.getElementById('nome').value;
+                    const telefone = document.getElementById('telefone').value;
+                    const email = document.getElementById('email').value;
+                    const cpf = document.getElementById('cpf').value;
+                    const cargo = document.getElementById('cargo').value;
+
+                    // Validar os campos
+                    if (!nome || !telefone || !email || !cpf || !cargo) {
+                        alert('Por favor, preencha todos os campos.');
+                        return;
+                    }
+
+                    const data = {
+                        nome: nome,
+                        telefone: telefone,
+                        email: email,
+                        cpf: cpf,
+                        cargo: cargo
+                    };
+
+                    // Atualizar os dados do usuário
+                    updateFuncionario(user.id, data)
+                        .then(response => {
+                            alert('Dados atualizados com sucesso!');
+                            logout();
+                        })
+                        .catch(error => {
+                            console.error('Erro ao atualizar os dados:', error);
+                            alert('Ocorreu um erro ao atualizar os dados. Tente novamente mais tarde.');
+                        });
+                });
+            } else {
+                alert('Você precisa estar logado para acessar esta página.');
+                window.location.href = '../../index.html';
+            }
+        });
+
+        function toggleMenu(){
+            const menuMobile = document.getElementById("menu-mobile")
+            if(menuMobile.className === "menu-mobile-active"){
+                menuMobile.className = "menu-mobile"
+            }else{
+                menuMobile.className = "menu-mobile-active"
+            }
+        }
+    </script>
+</body>
+</html>
