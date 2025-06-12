@@ -1,0 +1,3 @@
+# flyctl launch added from Codigo\pet\backend\.gitignore
+Codigo\pet\backend\**\node_modules
+fly.toml
