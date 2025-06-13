@@ -5,7 +5,7 @@ function toggleMenu() {
 }
 
 // Constante para a URL base da API
-const API_BASE_URL = 'http://localhost:3060';
+const API_BASE_URL = 'https://backend-fragrant-feather-2415.fly.dev';
 
 // Função para carregar os pets hospedados
 async function carregarPetsHospedados() {

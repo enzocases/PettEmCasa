@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           selectPets.innerHTML = '<option value="">Carregando pets...</option>';
           selectPets.disabled = true;
           
-          const response = await authenticatedFetch("http://localhost:3060/api/pets");
+          const response = await authenticatedFetch(`${API_BASE_URL}/api/pets`);
           
           if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       submitButton.disabled = true;
   
       try {
-          const response = await authenticatedFetch("http://localhost:3060/api/reservas", {
+          const response = await authenticatedFetch(`${API_BASE_URL}/api/reservas`, {
               method: "POST",
               body: JSON.stringify(novaReserva)
           });

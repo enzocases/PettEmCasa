@@ -19,7 +19,7 @@ async function carregarHistorico() {
     cardsContainer.innerHTML = '';
     
         console.log('Fazendo requisição para API');
-        const response = await fetch('http://localhost:3060/api/reservas', {
+        const response = await fetch(`${API_BASE_URL}/api/reservas`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 'Content-Type': 'application/json'
@@ -105,7 +105,7 @@ function filtrarReservas() {
 async function visualizarBoletim(idPet, idReserva) {
     try {
         console.log('Buscando boletim para:', { idPet, idReserva });
-        const response = await fetch(`http://localhost:3060/api/boletins/por-pet/${idPet}`, {
+        const response = await fetch(`${API_BASE_URL}/api/boletins/por-pet/${idPet}`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 'Content-Type': 'application/json'

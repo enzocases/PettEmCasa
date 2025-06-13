@@ -162,6 +162,7 @@
         </div>
     </main>
 
+    <script src="../../js/config.js"></script>
     <script src="../../js/auth.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.2.0/intro.min.js"></script>
     <script src="../../js/telaTutor.js"></script>
@@ -180,13 +181,13 @@
         
         async function loadUserData() {
             try {
-                const petsResponse = await authenticatedFetch('http://localhost:3060/api/pets');
+                const petsResponse = await authenticatedFetch(`${API_BASE_URL}/api/pets`);
                 if (petsResponse.ok) {
                     const pets = await petsResponse.json();
                     document.getElementById('petsCount').textContent = pets.length || 0;
                 }
                 
-                const reservationsResponse = await authenticatedFetch('http://localhost:3060/api/reservas');
+                const reservationsResponse = await authenticatedFetch(`${API_BASE_URL}/api/reservas`);
                 if (reservationsResponse.ok) {
                     const reservations = await reservationsResponse.json();
                     

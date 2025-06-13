@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const carregarAcomodacoes = async () => {
         try {
-            const response = await authenticatedFetch("http://localhost:3060/api/acomodacoes");
+            const response = await authenticatedFetch(`${API_BASE_URL}/api/acomodacoes`);
             
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function abrirModalEditar(id) {
         try {
-            const response = await authenticatedFetch(`http://localhost:3060/api/acomodacoes/${id}`);
+            const response = await authenticatedFetch(`${API_BASE_URL}/api/acomodacoes/${id}`);
             
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const novaAcomodacao = { nome, tipo, quantidadePets: quantidadePetsNumerica };
 
         try {
-            const response = await authenticatedFetch("http://localhost:3060/api/acomodacoes", {
+            const response = await authenticatedFetch(`${API_BASE_URL}/api/acomodacoes`, {
                 method: "POST",
                 body: JSON.stringify(novaAcomodacao),
             });
@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const acomodacaoAtualizada = { nome, tipo, quantidadePets };
 
         try {
-            const response = await authenticatedFetch(`http://localhost:3060/api/acomodacoes/${id}`, {
+            const response = await authenticatedFetch(`${API_BASE_URL}/api/acomodacoes/${id}`, {
                 method: "PUT",
                 body: JSON.stringify(acomodacaoAtualizada),
             });
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const id = document.getElementById("excluir-id").value;
 
         try {
-            const response = await authenticatedFetch(`http://localhost:3060/api/acomodacoes/${id}`, {
+            const response = await authenticatedFetch(`${API_BASE_URL}/api/acomodacoes/${id}`, {
                 method: "DELETE",
             });
             

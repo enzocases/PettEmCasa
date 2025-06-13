@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   requireAuth();
 
   try {
-    const response = await authenticatedFetch("http://localhost:3060/api/pets");
+    const response = await authenticatedFetch(`${API_BASE_URL}/api/pets`);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -65,7 +65,7 @@ window.adicionarPet = async function () {
 
   try {
     const response = await authenticatedFetch(
-      "http://localhost:3060/api/pets",
+      `${API_BASE_URL}/api/pets`,
       {
         method: "POST",
         body: JSON.stringify(petData),
@@ -97,7 +97,7 @@ window.editarPet = async function (id) {
 
   try {
     const response = await authenticatedFetch(
-      `http://localhost:3060/api/pets/${id}`
+      `${API_BASE_URL}/api/pets/${id}`
     );
 
     if (!response.ok) {
@@ -134,7 +134,7 @@ window.salvarEdicao = async function (event) {
 
   try {
     const response = await authenticatedFetch(
-      `http://localhost:3060/api/pets/${id}`,
+      `${API_BASE_URL}/api/pets/${id}`,
       {
         method: "PUT",
         body: JSON.stringify(petData),
@@ -169,7 +169,7 @@ window.excluirPet = function (id) {
   modal.querySelector(".excluir").onclick = async function () {
     try {
       const response = await authenticatedFetch(
-        `http://localhost:3060/api/pets/${id}`,
+        `${API_BASE_URL}/api/pets/${id}`,
         {
           method: "DELETE",
         }

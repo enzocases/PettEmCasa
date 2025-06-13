@@ -320,6 +320,7 @@
         </div>
     </div>
 
+    <script src="../../js/config.js"></script>
     <script src="../../js/auth.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.2.0/intro.min.js"></script>
     <script>
@@ -333,7 +334,7 @@
 
             async function fetchReservas() {
                 try {
-                    const response = await authenticatedFetch("http://localhost:3060/api/reservas");
+                    const response = await authenticatedFetch(`${API_BASE_URL}/api/reservas`);
 
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
@@ -384,7 +385,7 @@
 
         async function aceitarReserva(id) {
         try {
-            const response = await authenticatedFetch(`http://localhost:3060/api/reservas/${id}`, {
+            const response = await authenticatedFetch(`${API_BASE_URL}/api/reservas/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -404,7 +405,7 @@
 
     async function recusarReserva(id) {
         try {
-            const response = await authenticatedFetch(`http://localhost:3060/api/reservas/${id}`, {
+            const response = await authenticatedFetch(`${API_BASE_URL}/api/reservas/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -447,7 +448,7 @@
         const novoStatus = document.getElementById('novoStatus').value;
 
         try {
-            const response = await authenticatedFetch(`http://localhost:3060/api/reservas/${id}`, {
+            const response = await authenticatedFetch(`${API_BASE_URL}/api/reservas/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"

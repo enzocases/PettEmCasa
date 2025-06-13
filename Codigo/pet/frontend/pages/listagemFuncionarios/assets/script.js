@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Função para carregar a lista de funcionários
 async function carregarFuncionarios() {
     try {
-        const response = await authenticatedFetch('http://localhost:3060/api/funcionarios');
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/funcionarios`);
         if (!response.ok) {
             throw new Error('Erro ao carregar funcionários');
         }
@@ -67,7 +67,7 @@ async function excluirFuncionario(id) {
     }
 
     try {
-        const response = await authenticatedFetch(`http://localhost:3060/api/funcionarios/${id}`, {
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/funcionarios/${id}`, {
             method: 'DELETE'
         });
 

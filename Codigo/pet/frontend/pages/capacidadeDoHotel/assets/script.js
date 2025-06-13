@@ -70,7 +70,7 @@ function initializeChart() {
 
 async function fetchHotelCapacity() {
     try {
-        const response = await authenticatedFetch('http://localhost:3060/api/reservas/active-pets');
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/reservas/active-pets`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -113,4 +113,3 @@ function updateChart(petsHospedados, vagasDisponiveis) {
         capacityChart.update();
     }
 }
-

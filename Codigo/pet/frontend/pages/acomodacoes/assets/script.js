@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 async function carregarAcomodacoes() {
     try {
-        const response = await authenticatedFetch("http://localhost:3060/api/acomodacoes");
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/acomodacoes`);
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -71,7 +71,7 @@ function fecharModal() {
 
 async function editarAcomodacao(id) {
     try {
-        const response = await authenticatedFetch(`http://localhost:3060/api/acomodacoes/${id}`);
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/acomodacoes/${id}`);
         if (!response.ok) throw new Error("Erro ao buscar dados da acomodação");
         
         const acomodacao = await response.json();
@@ -92,7 +92,7 @@ async function excluirAcomodacao(id) {
     if (!confirm("Tem certeza que deseja excluir esta acomodação?")) return;
 
     try {
-        const response = await authenticatedFetch(`http://localhost:3060/api/acomodacoes/${id}`, {
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/acomodacoes/${id}`, {
             method: 'DELETE'
         });
 
@@ -111,7 +111,7 @@ async function excluirAcomodacao(id) {
 
 async function adicionarPet(id) {
     try {
-        const response = await authenticatedFetch(`http://localhost:3060/api/acomodacoes/${id}/ocupacao`, {
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/acomodacoes/${id}/ocupacao`, {
             method: 'PUT',
             body: JSON.stringify({ acao: 'adicionar' })
         });
@@ -130,7 +130,7 @@ async function adicionarPet(id) {
 
 async function removerPet(id) {
     try {
-        const response = await authenticatedFetch(`http://localhost:3060/api/acomodacoes/${id}/ocupacao`, {
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/acomodacoes/${id}/ocupacao`, {
             method: 'PUT',
             body: JSON.stringify({ acao: 'remover' })
         });
@@ -168,8 +168,8 @@ document.getElementById('acomodacaoForm').addEventListener('submit', async funct
         const isAdding = document.getElementById('modalTitle').textContent.includes('Adicionar');
         const method = isAdding ? 'POST' : 'PUT';
         const id = document.getElementById('acomodacaoId').value;
-        const url = isAdding ? 'http://localhost:3060/api/acomodacoes' : 
-                   `http://localhost:3060/api/acomodacoes/${id}`;
+        const url = isAdding ? `${API_BASE_URL}/api/acomodacoes` : 
+                   `${API_BASE_URL}/api/acomodacoes/${id}`;
 
         console.log('Dados sendo enviados:', acomodacaoData);
         console.log('URL:', url);

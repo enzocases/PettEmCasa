@@ -14,7 +14,7 @@ async function carregarEstatisticas() {
     try {
         const capacidadeMaxima = 12;
         // Carregar reservas ativas e finalizadas dos últimos 7 dias
-        const responsePets = await authenticatedFetch("http://localhost:3060/api/reservas/active-pets-report");
+        const responsePets = await authenticatedFetch(`${API_BASE_URL}/api/reservas/active-pets-report`);
         if (!responsePets.ok) {
             throw new Error(`HTTP error! status: ${responsePets.status}`);
         }

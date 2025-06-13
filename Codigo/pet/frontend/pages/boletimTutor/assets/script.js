@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Função para carregar as reservas do tutor
 async function loadReservas() {
     try {
-        const response = await authenticatedFetch('http://localhost:3060/api/reservas');
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/reservas`);
 
         if (response.ok) {
             const reservas = await response.json();
@@ -56,7 +56,7 @@ async function loadBoletim() {
     }
 
     try {
-        const response = await authenticatedFetch('http://localhost:3060/api/boletins');
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/boletins`);
 
         if (response.ok) {
             const boletins = await response.json();

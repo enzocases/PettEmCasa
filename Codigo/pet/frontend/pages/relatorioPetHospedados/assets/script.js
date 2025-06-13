@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Função para carregar os pets com reservas ativas
 async function carregarPetsHospedados() {
     try {
-        const response = await authenticatedFetch('http://localhost:3060/api/reservas/active-pets-report');
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/reservas/active-pets-report`);
         const dados = await response.json();
         
         const tableBody = document.getElementById('petsTableBody');

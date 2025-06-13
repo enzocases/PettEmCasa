@@ -70,7 +70,7 @@ function fecharModalExcluir() {
 // Funções para interação com a API
 async function carregarPets() {
     try {
-        const response = await authenticatedFetch('http://localhost:3060/api/reservas/active-pets');
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/reservas/active-pets`);
         if (!response.ok) {
             if (response.status === 401 || response.status === 403) {
                 alert('Sua sessão expirou ou você não tem permissão. Por favor, faça login novamente.');
@@ -120,7 +120,7 @@ async function carregarPets() {
 
 async function carregarPertences() {
     try {
-        const response = await authenticatedFetch('http://localhost:3060/api/pertences');
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/pertences`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -192,7 +192,7 @@ async function adicionarPertence(event) {
     }
 
     try {
-        const response = await authenticatedFetch('http://localhost:3060/api/pertences', {
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/pertences`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -242,7 +242,7 @@ async function editarPertence(event) {
     }
 
     try {
-        const response = await authenticatedFetch(`http://localhost:3060/api/pertences/${id}`, {
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/pertences/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -276,7 +276,7 @@ async function confirmarExclusao() {
     if (!pertenceIdParaExcluir) return;
 
     try {
-        const response = await authenticatedFetch(`http://localhost:3060/api/pertences/${pertenceIdParaExcluir}`, {
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/pertences/${pertenceIdParaExcluir}`, {
             method: 'DELETE'
         });
 

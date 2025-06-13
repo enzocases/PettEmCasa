@@ -23,14 +23,14 @@ function logout() {
 }
 
 function updateTutor(id, data) {
-    return authenticatedFetch(`http://localhost:3060/api/tutores/${id}`, {
+    return authenticatedFetch(`${API_BASE_URL}/api/tutores/${id}`, {
         method: 'PUT',
         body: JSON.stringify(data)
     });
 }
 
 function updateFuncionario(id, data) {
-    return authenticatedFetch(`http://localhost:3060/api/funcionarios/${id}`, {
+    return authenticatedFetch(`${API_BASE_URL}/api/funcionarios/${id}`, {
         method: 'PUT',
         body: JSON.stringify(data)
     });

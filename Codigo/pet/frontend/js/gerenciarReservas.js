@@ -24,7 +24,7 @@ function toggleMenu() {
     if (listaReservas) listaReservas.innerHTML = '';
   
     try {
-        const response = await authenticatedFetch("http://localhost:3060/api/reservas");
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/reservas`);
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -130,7 +130,7 @@ function toggleMenu() {
         }
   
         try {
-            const response = await authenticatedFetch(`http://localhost:3060/api/reservas/${selectedReserva.idReserva}`, {
+            const response = await authenticatedFetch(`${API_BASE_URL}/api/reservas/${selectedReserva.idReserva}`, {
                 method: "PUT",
                 body: JSON.stringify(updatedReserva),
             });
@@ -159,7 +159,7 @@ function toggleMenu() {
   
   async function excluirReserva(idReserva) {
     try {
-        const response = await authenticatedFetch(`http://localhost:3060/api/reservas/${idReserva}`, {
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/reservas/${idReserva}`, {
             method: 'DELETE',
         });
         

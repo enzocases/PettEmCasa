@@ -3,7 +3,7 @@ let reservas = [];
 
 async function carregarReservas() {
     try {
-        const response = await authenticatedFetch('http://localhost:3060/api/reservas');
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/reservas`);
         if (!response.ok) {
             throw new Error('Erro ao carregar reservas');
         }
@@ -73,7 +73,7 @@ async function salvarBoletim() {
         let response;
         if (boletimExistente) {
             // Atualizar boletim existente
-            response = await authenticatedFetch(`http://localhost:3060/api/boletins/${boletimExistente.idBoletim}`, {
+            response = await authenticatedFetch(`${API_BASE_URL}/api/boletins/${boletimExistente.idBoletim}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ async function salvarBoletim() {
             });
         } else {
             // Criar novo boletim
-            response = await authenticatedFetch('http://localhost:3060/api/boletins', {
+            response = await authenticatedFetch(`${API_BASE_URL}/api/boletins`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -107,7 +107,7 @@ async function salvarBoletim() {
 
 async function carregarBoletins() {
     try {
-        const response = await authenticatedFetch('http://localhost:3060/api/boletins');
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/boletins`);
         if (!response.ok) {
             throw new Error('Erro ao carregar boletins');
         }
@@ -171,7 +171,7 @@ async function editarBoletim(idBoletim) {
 
     try {
         // Primeiro, carregar todas as reservas para garantir que temos a lista atualizada
-        const response = await authenticatedFetch('http://localhost:3060/api/reservas');
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/reservas`);
         if (!response.ok) {
             throw new Error('Erro ao carregar reservas');
         }
@@ -221,7 +221,7 @@ async function excluirBoletim(idBoletim) {
     if (!confirm('Tem certeza que deseja excluir este boletim?')) return;
 
     try {
-        const response = await authenticatedFetch(`http://localhost:3060/api/boletins/${idBoletim}`, {
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/boletins/${idBoletim}`, {
             method: 'DELETE'
         });
 

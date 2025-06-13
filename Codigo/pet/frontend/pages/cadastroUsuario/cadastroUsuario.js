@@ -58,7 +58,7 @@ document.getElementById('cadastroForm').addEventListener('submit', async functio
     }
 
     try {
-        const response = await fetch('http://localhost:3060/api/tutores', {
+        const response = await fetch(`${API_BASE_URL}/api/tutores`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

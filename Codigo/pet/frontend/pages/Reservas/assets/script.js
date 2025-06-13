@@ -9,13 +9,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     // Use the main endpoint - it already filters by user ID on the backend
-    const response = await authenticatedFetch("http://localhost:3060/api/reservas");
+    const response = await authenticatedFetch(`${API_BASE_URL}/api/reservas`);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const reservas = await response.json();
+    const todasReservas = await response.json();
+    // Filtra as reservas para mostrar apenas as do usuário atual
+    const reservas = todasReservas.filter(r => r.idTutor === user.id);
     const container = document.querySelector(".card-container");
 
     if (reservas.length === 0) {
@@ -51,7 +53,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 async function carregaFiltros() {
   try {
-    const response = await authenticatedFetch("http://localhost:3060/api/pets");
+    const response = await authenticatedFetch(`${API_BASE_URL}/api/pets`);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -86,7 +88,7 @@ async function carregaFiltros() {
   }
 
   try {
-    const response = await authenticatedFetch("http://localhost:3060/api/funcionarios");
+    const response = await authenticatedFetch(`${API_BASE_URL}/api/funcionarios`);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -164,7 +166,7 @@ window.adicionarReserva = async function (event) {
 
   try {
     const response = await authenticatedFetch(
-      "http://localhost:3060/api/reservas",
+      `${API_BASE_URL}/api/reservas`,
       {
         method: "POST",
         body: JSON.stringify(reservaData),
@@ -203,7 +205,7 @@ window.editarReserva = async function (id) {
 
   try {
     const response = await authenticatedFetch(
-      `http://localhost:3060/api/reservas/${id}`
+      `${API_BASE_URL}/api/reservas/${id}`
     );
 
     if (!response.ok) {
@@ -258,7 +260,7 @@ window.salvarEdicao = async function (event) {
 
   try {
     const response = await authenticatedFetch(
-      `http://localhost:3060/api/reservas/${id}`,
+      `${API_BASE_URL}/api/reservas/${id}`,
       {
         method: "PUT",
         body: JSON.stringify(reservaData),
@@ -290,7 +292,7 @@ window.excluirReserva = function (id) {
   modal.querySelector(".excluir").onclick = async function () {
     try {
       const response = await authenticatedFetch(
-        `http://localhost:3060/api/reservas/${id}`,
+        `${API_BASE_URL}/api/reservas/${id}`,
         {
           method: "DELETE",
         }

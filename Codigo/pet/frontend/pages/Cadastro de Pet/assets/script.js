@@ -42,7 +42,7 @@ cadastrarPetForm.addEventListener('submit', async (event) => {
 
   try {
     // Usar authenticatedFetch em vez de fetch regular
-    const response = await authenticatedFetch('http://localhost:3060/api/pets', {
+    const response = await authenticatedFetch(`${API_BASE_URL}/api/pets`, {
       method: 'POST',
       body: JSON.stringify(novoPet)  // authenticatedFetch já adiciona Content-Type
     });
