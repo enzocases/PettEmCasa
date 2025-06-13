@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const { sequelize, Funcionario } = require('./models');
+require('dotenv').config();
 
 // Importando as rotas
 const tutorRoutes = require("./routes/tutorRoutes");
@@ -83,8 +84,8 @@ sequelize
     // Create default funcionario after database sync
     await createDefaultFuncionario();
 
-    app.listen(3060, () => {
-      console.log("🚀 Servidor rodando na porta 3060");
+    app.listen(process.env.PORT || 3060, () => {
+      console.log(`🚀 Servidor rodando na porta ${process.env.PORT || 3060}`);
     });
   })
   .catch((error) => {
