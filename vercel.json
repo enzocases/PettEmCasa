@@ -2,15 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "**/*",
+      "src": "Codigo/pet/frontend/**/*",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/$1"
+      "dest": "/Codigo/pet/frontend/$1"
     }
-  ],
-  "outputDirectory": "."
+  ]
 } 
