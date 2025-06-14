@@ -36,11 +36,12 @@
 }
 
 .fotoTutor {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 100%;
-  border: var(--text-dark) 2px solid;
+  font-size: 2rem;
+  color: var(--text-dark);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 img {
