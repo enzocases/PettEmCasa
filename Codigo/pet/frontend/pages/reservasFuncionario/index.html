@@ -351,8 +351,8 @@
                     reservas.forEach((reserva) => {
                         const reservaCard = `
                             <div class="card" data-id="${reserva.idReserva}">
-                                <h2>${reserva.Pet.nome}</h2>
-                                <p><strong>Pet:</strong> ${reserva.Pet.nome}</p>
+                                <h2>${reserva.pet?.nome || 'Pet não encontrado'}</h2>
+                                <p><strong>Pet:</strong> ${reserva.pet?.nome || 'Pet não encontrado'}</p>
                                 <p><strong>Entrada:</strong> ${new Date(reserva.data_entrada).toLocaleDateString()}</p>
                                 <p><strong>Saída:</strong> ${new Date(reserva.data_saida).toLocaleDateString()}</p>
                                 <p><strong>Status:</strong> <span class="status-text">${reserva.status}</span></p>
@@ -361,7 +361,7 @@
                                     <button class="recusar" onclick="recusarReserva(${reserva.idReserva})">Recusar</button>
                                     <button class="aceitar" onclick="aceitarReserva(${reserva.idReserva})">Aceitar</button>
                                     ` : `
-                                    <button class="editar-status" onclick="editarStatus(${reserva.idReserva}, '${reserva.status}', '${reserva.Pet.nome}', '${new Date(reserva.data_entrada).toLocaleDateString()}', '${new Date(reserva.data_saida).toLocaleDateString()}')">
+                                    <button class="editar-status" onclick="editarStatus(${reserva.idReserva}, '${reserva.status}', '${reserva.pet?.nome || 'Pet não encontrado'}', '${new Date(reserva.data_entrada).toLocaleDateString()}', '${new Date(reserva.data_saida).toLocaleDateString()}')">
                                         Editar Status
                                     </button>
                                     `}
