@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const todasReservas = await response.json();
     // Filtra as reservas para mostrar apenas as do usuário atual
     const reservas = todasReservas.filter(r => r.idTutor === user.id);
+    console.log('Dados da reserva:', reservas[0]); // Vamos ver a estrutura do primeiro item
     const container = document.querySelector(".card-container");
 
     if (reservas.length === 0) {
@@ -28,8 +29,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     reservas.forEach((reserva) => {
       const reservaCard = `
         <div class="card" data-id="${reserva.idReserva}">
-          <h2>${reserva.Pet.nome}</h2>
-          <p><strong>Pet:</strong> ${reserva.Pet.nome}</p>
+          <h2>${reserva.Pet?.nome || 'Pet não encontrado'}</h2>
+          <p><strong>Pet:</strong> ${reserva.Pet?.nome || 'Pet não encontrado'}</p>
           <p><strong>Entrada:</strong> ${new Date(reserva.data_entrada).toLocaleDateString()}</p>
           <p><strong>Saída:</strong> ${new Date(reserva.data_saida).toLocaleDateString()}</p>
           <p><strong>Status:</strong> <span class="status-text">${reserva.status}</span></p>
