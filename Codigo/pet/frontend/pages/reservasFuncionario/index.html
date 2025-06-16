@@ -335,24 +335,33 @@
             async function fetchReservas() {
                 try {
                     const response = await authenticatedFetch(`${API_BASE_URL}/api/reservas`);
-
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                     const reservas = await response.json();
-                    const container = document.querySelector(".card-container");
 
+                    // Buscar todos os pets
+                    const petsResponse = await authenticatedFetch(`${API_BASE_URL}/api/pets`);
+                    if (!petsResponse.ok) throw new Error(`HTTP error! status: ${petsResponse.status}`);
+                    const pets = await petsResponse.json();
+
+                    // Criar um mapa de pets por id
+                    const petsMap = {};
+                    pets.forEach(pet => {
+                        petsMap[pet.idPet] = pet;
+                    });
+
+                    const container = document.querySelector(".card-container");
                     if (reservas.length === 0) {
                         container.innerHTML = "<p>Você ainda não recebeu nenhuma solicitação de reserva.</p>";
                         return;
                     }
 
                     reservas.forEach((reserva) => {
+                        const pet = petsMap[reserva.idPet];
+                        const petNome = pet ? pet.nome : 'Pet não encontrado';
                         const reservaCard = `
                             <div class="card" data-id="${reserva.idReserva}">
-                                <h2>${reserva.pet?.nome || 'Pet não encontrado'}</h2>
-                                <p><strong>Pet:</strong> ${reserva.pet?.nome || 'Pet não encontrado'}</p>
+                                <h2>${petNome}</h2>
+                                <p><strong>Pet:</strong> ${petNome}</p>
                                 <p><strong>Entrada:</strong> ${new Date(reserva.data_entrada).toLocaleDateString()}</p>
                                 <p><strong>Saída:</strong> ${new Date(reserva.data_saida).toLocaleDateString()}</p>
                                 <p><strong>Status:</strong> <span class="status-text">${reserva.status}</span></p>
@@ -361,7 +370,7 @@
                                     <button class="recusar" onclick="recusarReserva(${reserva.idReserva})">Recusar</button>
                                     <button class="aceitar" onclick="aceitarReserva(${reserva.idReserva})">Aceitar</button>
                                     ` : `
-                                    <button class="editar-status" onclick="editarStatus(${reserva.idReserva}, '${reserva.status}', '${reserva.pet?.nome || 'Pet não encontrado'}', '${new Date(reserva.data_entrada).toLocaleDateString()}', '${new Date(reserva.data_saida).toLocaleDateString()}')">
+                                    <button class="editar-status" onclick="editarStatus(${reserva.idReserva}, '${reserva.status}', '${petNome}', '${new Date(reserva.data_entrada).toLocaleDateString()}', '${new Date(reserva.data_saida).toLocaleDateString()}')">
                                         Editar Status
                                     </button>
                                     `}
