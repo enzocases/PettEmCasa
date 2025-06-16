@@ -338,6 +338,20 @@
                     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                     const reservas = await response.json();
 
+                    // Tenta buscar todos os pets (caso o backend não envie o objeto Pet em todas as reservas)
+                    let petsMap = {};
+                    try {
+                        const petsResponse = await authenticatedFetch(`${API_BASE_URL}/api/pets`);
+                        if (petsResponse.ok) {
+                            const pets = await petsResponse.json();
+                            pets.forEach(pet => {
+                                petsMap[pet.idPet] = pet;
+                            });
+                        }
+                    } catch (e) {
+                        // Se não conseguir buscar pets, segue sem o mapa
+                    }
+
                     const container = document.querySelector(".card-container");
                     if (reservas.length === 0) {
                         container.innerHTML = "<p>Você ainda não recebeu nenhuma solicitação de reserva.</p>";
@@ -345,7 +359,12 @@
                     }
 
                     reservas.forEach((reserva) => {
-                        const petNome = reserva.Pet && reserva.Pet.nome ? reserva.Pet.nome : 'Pet não encontrado';
+                        let petNome = 'Pet não encontrado';
+                        if (reserva.Pet && reserva.Pet.nome) {
+                            petNome = reserva.Pet.nome;
+                        } else if (petsMap[reserva.idPet] && petsMap[reserva.idPet].nome) {
+                            petNome = petsMap[reserva.idPet].nome;
+                        }
                         const reservaCard = `
                             <div class="card" data-id="${reserva.idReserva}">
                                 <h2>${petNome}</h2>
