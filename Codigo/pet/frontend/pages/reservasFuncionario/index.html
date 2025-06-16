@@ -343,11 +343,16 @@
                     if (!petsResponse.ok) throw new Error(`HTTP error! status: ${petsResponse.status}`);
                     const pets = await petsResponse.json();
 
+                    // Logs de debug
+                    console.log('Reservas:', reservas);
+                    console.log('Pets:', pets);
+
                     // Criar um mapa de pets por id
                     const petsMap = {};
                     pets.forEach(pet => {
                         petsMap[pet.idPet] = pet;
                     });
+                    console.log('PetsMap:', petsMap);
 
                     const container = document.querySelector(".card-container");
                     if (reservas.length === 0) {
@@ -356,6 +361,8 @@
                     }
 
                     reservas.forEach((reserva) => {
+                        console.log('Reserva:', reserva);
+                        console.log('Procurando pet de id:', reserva.idPet, 'Encontrado:', petsMap[reserva.idPet]);
                         const pet = petsMap[reserva.idPet];
                         const petNome = pet ? pet.nome : 'Pet não encontrado';
                         const reservaCard = `
