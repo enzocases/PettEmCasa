@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Função para carregar as reservas do tutor
 async function loadReservas() {
     try {
-        const response = await authenticatedFetch(`${API_BASE_URL}/api/reservas`);
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/reservas/minhas`);
 
         if (response.ok) {
             const reservas = await response.json();

@@ -357,3 +357,22 @@ exports.getPetsWithActiveReservationsReport = async (req, res) => {
         return res.status(500).json({ error: 'Erro ao gerar relatório de pets hospedados' });
     }
 };
+
+// Obter apenas as reservas do tutor logado
+exports.getMinhasReservas = async (req, res) => {
+    try {
+        const idTutor = req.user.id;
+        const reservas = await Reserva.findAll({
+            where: { idTutor },
+            include: [{
+                model: Pet,
+                attributes: ['idPet', 'nome', 'raca', 'porte']
+            }],
+            order: [['data_entrada', 'DESC']]
+        });
+        return res.status(200).json(reservas);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: 'Erro ao buscar suas reservas' });
+    }
+};

@@ -27,4 +27,7 @@ router.put('/:idReserva', ReservaController.updateReserva);
 // Rota para excluir uma reserva (acessível por tutores e funcionários)
 router.delete('/:idReserva', ReservaController.deleteReserva);
 
+// Rota para obter apenas as reservas do tutor logado
+router.get('/minhas', require('../middlewares/verifyToken'), ReservaController.getMinhasReservas);
+
 module.exports = router;
