@@ -9,6 +9,9 @@ router.get('/active-pets', ReservaController.getPetsWithActiveReservations);
 // Rota para obter relatório de pets hospedados
 router.get('/active-pets-report', ReservaController.getPetsWithActiveReservationsReport);
 
+// Rota para obter apenas as reservas do tutor logado
+router.get('/minhas', require('../middlewares/verifyToken'), ReservaController.getMinhasReservas);
+
 // Rota para criar uma reserva
 router.post('/', ReservaController.createReserva);
 
@@ -26,8 +29,5 @@ router.put('/:idReserva', ReservaController.updateReserva);
 
 // Rota para excluir uma reserva (acessível por tutores e funcionários)
 router.delete('/:idReserva', ReservaController.deleteReserva);
-
-// Rota para obter apenas as reservas do tutor logado
-router.get('/minhas', require('../middlewares/verifyToken'), ReservaController.getMinhasReservas);
 
 module.exports = router;
