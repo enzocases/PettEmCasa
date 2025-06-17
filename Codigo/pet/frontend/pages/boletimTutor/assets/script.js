@@ -56,11 +56,18 @@ async function loadBoletim() {
     }
 
     try {
-        const response = await authenticatedFetch(`${API_BASE_URL}/api/boletins`);
+        const user = getCurrentUser();
+        if (!user) {
+            showAlert('Usuário não autenticado', 'error');
+            return;
+        }
+
+        // Buscar boletins do tutor logado usando a rota específica
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/boletins/por-tutor/${user.id}`);
 
         if (response.ok) {
             const boletins = await response.json();
-            // Encontrar o boletim correspondente à reserva
+            // Encontrar o boletim correspondente à reserva selecionada
             const boletim = boletins.find(b => b.idReserva === parseInt(reservaId));
             
             if (boletim) {

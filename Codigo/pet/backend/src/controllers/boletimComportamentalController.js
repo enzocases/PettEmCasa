@@ -213,10 +213,24 @@ exports.getBoletinsByTutor = async (req, res) => {
         const petIds = pets.map(pet => pet.idPet);
 
         const boletins = await BoletimComportamental.findAll({
-            where: { idPet: petIds }
+            where: { idPet: petIds },
+            include: [
+                { model: Pet },
+                { model: Reserva }
+            ]
         });
 
-        return res.status(200).json(boletins);
+        const boletinsComDescricaoConvertida = boletins.map(boletim => {
+            const boletimObj = boletim.get({ plain: true });
+            try {
+                boletimObj.descricao = JSON.parse(boletimObj.descricao);
+            } catch (e) {
+                console.error('Erro ao converter descrição:', e);
+            }
+            return boletimObj;
+        });
+
+        return res.status(200).json(boletinsComDescricaoConvertida);
     } catch (error) {
         console.error(error);
         return res.status(500).json({ error: 'Erro ao buscar boletins por tutor' });
