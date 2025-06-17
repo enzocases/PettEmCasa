@@ -9,14 +9,14 @@ router.get('/active-pets', ReservaController.getPetsWithActiveReservations);
 // Rota para obter relatório de pets hospedados
 router.get('/active-pets-report', ReservaController.getPetsWithActiveReservationsReport);
 
-// Rota para obter reservas do tutor logado
-router.get('/tutor', ReservaController.getReservasByTutor);
-
 // Rota para criar uma reserva
 router.post('/', ReservaController.createReserva);
 
 // Rota para obter todas as reservas
 router.get('/', ReservaController.getAllReservas);
+
+// Rota para obter reservas do tutor logado
+router.get('/tutor', ReservaController.getReservasByTutor);
 
 // Rota para obter uma reserva específica
 router.get('/:idReserva', ReservaController.getReservaById);
