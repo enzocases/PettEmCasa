@@ -66,6 +66,29 @@ exports.getAllReservas = async (req, res) => {
     }
 };
 
+// Obter reservas apenas do tutor logado (para histórico do tutor)
+exports.getReservasByTutor = async (req, res) => {
+    try {
+        const idTutor = req.user.id;
+        
+        const reservas = await Reserva.findAll({
+            where: {
+                idTutor: idTutor
+            },
+            include: [{
+                model: Pet,
+                attributes: ['idPet', 'nome', 'raca', 'porte']
+            }],
+            order: [['data_entrada', 'DESC']]
+        });
+        
+        return res.status(200).json(reservas);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: 'Erro ao buscar reservas do tutor' });
+    }
+};
+
 // Obter uma reserva específica (apenas se o pet pertencer ao tutor)
 exports.getReservaById = async (req, res) => {
     try {

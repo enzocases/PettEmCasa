@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', async function() {
+    // Verificar autenticação
+    if (!requireAuth()) return;
+    if (!requireUserType('Tutor')) return;
+    
     console.log('Iniciando carregamento do histórico');
     await carregarHistorico();
     setupEventListeners();
@@ -19,12 +23,7 @@ async function carregarHistorico() {
     cardsContainer.innerHTML = '';
     
         console.log('Fazendo requisição para API');
-        const response = await fetch(`${API_BASE_URL}/api/reservas`, {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                'Content-Type': 'application/json'
-            }
-        });
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/reservas/tutor`);
         
         if (!response.ok) {
             console.error('Erro na resposta da API:', response.status);
@@ -105,12 +104,7 @@ function filtrarReservas() {
 async function visualizarBoletim(idPet, idReserva) {
     try {
         console.log('Buscando boletim para:', { idPet, idReserva });
-        const response = await fetch(`${API_BASE_URL}/api/boletins/por-pet/${idPet}`, {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                'Content-Type': 'application/json'
-            }
-        });
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/boletins/por-pet/${idPet}`);
 
         if (!response.ok) {
             throw new Error('Erro ao buscar boletim');
