@@ -236,3 +236,38 @@ exports.getBoletinsByTutor = async (req, res) => {
         return res.status(500).json({ error: 'Erro ao buscar boletins por tutor' });
     }
 };
+
+// Obter boletins dos pets do tutor logado
+exports.getBoletinsDoTutorLogado = async (req, res) => {
+    try {
+        const idTutor = req.user.id;
+        const pets = await Pet.findAll({
+            where: { idTutor },
+            attributes: ['idPet']
+        });
+        const petIds = pets.map(pet => pet.idPet);
+        if (petIds.length === 0) {
+            return res.status(200).json([]);
+        }
+        const boletins = await BoletimComportamental.findAll({
+            where: { idPet: petIds },
+            include: [
+                { model: Pet },
+                { model: Reserva }
+            ]
+        });
+        const boletinsComDescricaoConvertida = boletins.map(boletim => {
+            const boletimObj = boletim.get({ plain: true });
+            try {
+                boletimObj.descricao = JSON.parse(boletimObj.descricao);
+            } catch (e) {
+                // Se não for JSON, mantém como está
+            }
+            return boletimObj;
+        });
+        return res.status(200).json(boletinsComDescricaoConvertida);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: 'Erro ao buscar boletins do tutor logado' });
+    }
+};

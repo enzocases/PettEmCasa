@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const selectPets = document.getElementById("pets");
       
       try {
+          // A rota /api/pets retorna apenas os pets do tutor logado
           // Show loading state
           selectPets.innerHTML = '<option value="">Carregando pets...</option>';
           selectPets.disabled = true;

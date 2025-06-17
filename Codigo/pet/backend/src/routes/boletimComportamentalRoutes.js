@@ -13,4 +13,7 @@ router.get('/:idBoletim', boletimController.getBoletimById);
 router.put('/:idBoletim', boletimController.updateBoletim);
 router.delete('/:idBoletim', boletimController.deleteBoletim);
 
+// Rota para obter boletins dos pets do tutor logado
+router.get('/meus', require('../middlewares/verifyToken'), boletimController.getBoletinsDoTutorLogado);
+
 module.exports = router;

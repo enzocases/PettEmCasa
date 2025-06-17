@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 async function carregaFiltros() {
   try {
+    // A rota /api/pets retorna apenas os pets do tutor logado
     const response = await authenticatedFetch(`${API_BASE_URL}/api/pets`);
 
     if (!response.ok) {

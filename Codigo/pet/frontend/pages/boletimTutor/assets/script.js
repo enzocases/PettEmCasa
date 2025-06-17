@@ -62,8 +62,8 @@ async function loadBoletim() {
             return;
         }
 
-        // Buscar boletins do tutor logado usando a rota específica
-        const response = await authenticatedFetch(`${API_BASE_URL}/api/boletins/por-tutor/${user.id}`);
+        // Buscar boletins do tutor logado usando a rota segura
+        const response = await authenticatedFetch(`${API_BASE_URL}/api/boletins/meus`);
 
         if (response.ok) {
             const boletins = await response.json();
