@@ -105,9 +105,12 @@ document.addEventListener("DOMContentLoaded", async () => {
           return;
       }
   
+      // Corrigir validação de data: comparar apenas a data, não a hora
       const today = new Date();
       today.setHours(0, 0, 0, 0);
-      if (new Date(dataEntrada) < today) {
+      const dataEntradaObj = new Date(dataEntrada);
+      
+      if (dataEntradaObj < today) {
           alert("A data de entrada não pode ser no passado.");
           return;
       }

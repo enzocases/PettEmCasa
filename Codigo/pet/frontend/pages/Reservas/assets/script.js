@@ -153,15 +153,22 @@ window.adicionarReserva = async function (event) {
     alert("Por favor, preencha todos os campos.");
     return;
   }
-  if (new Date(reservaData.dataEntrada) < new Date()) {
+  
+  // Corrigir validação de data: comparar apenas a data, não a hora
+  const hoje = new Date();
+  hoje.setHours(0, 0, 0, 0);
+  const dataEntrada = new Date(reservaData.dataEntrada);
+  const dataSaida = new Date(reservaData.dataSaida);
+  
+  if (dataEntrada < hoje) {
     alert("A data de entrada não pode ser no passado.");
     return;
   }
-  if (new Date(reservaData.dataSaida) < new Date()) {
+  if (dataSaida < hoje) {
     alert("A data de saída não pode ser no passado.");
     return;
   }
-  if (new Date(reservaData.dataEntrada) > new Date(reservaData.dataSaida)) {
+  if (dataEntrada > dataSaida) {
     alert("A data de entrada deve ser anterior à data de saída.");
     return;
   }
@@ -247,15 +254,22 @@ window.salvarEdicao = async function (event) {
     alert("Por favor, preencha todos os campos.");
     return;
   }
-  if (new Date(reservaData.dataEntrada) < new Date()) {
+  
+  // Corrigir validação de data: comparar apenas a data, não a hora
+  const hoje = new Date();
+  hoje.setHours(0, 0, 0, 0);
+  const dataEntrada = new Date(reservaData.dataEntrada);
+  const dataSaida = new Date(reservaData.dataSaida);
+  
+  if (dataEntrada < hoje) {
     alert("A data de entrada não pode ser no passado.");
     return;
   }
-  if (new Date(reservaData.dataSaida) < new Date()) {
+  if (dataSaida < hoje) {
     alert("A data de saída não pode ser no passado.");
     return;
   }
-  if (new Date(reservaData.dataEntrada) > new Date(reservaData.dataSaida)) {
+  if (dataEntrada > dataSaida) {
     alert("A data de entrada deve ser anterior à data de saída.");
     return;
   }
